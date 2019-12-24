@@ -7,7 +7,7 @@
 - Elasticsearch 6.8.4
 - Docker, Docker Compose
 
-## Configuration
+##  Configuration
 
 Configuration for the processor is at `config/default.js`.
 The following parameters can be set in config files or in env variables:
