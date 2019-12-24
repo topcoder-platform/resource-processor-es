@@ -39,9 +39,9 @@ jobs:
           command: |
             ./awsconfiguration.sh DEV
             source awsenvconf 
-            ./buildenv.sh -e DEV -b resource-processor-es_deployvar
+            ./buildenv.sh -e DEV -b dev-resource-processor-es-deployvar
             source buildenvvar
-            ./master_deploy.sh -d ECS -e DEV -t latest -s dev-global-appvar,resource-processor-es_appvar -i resource-processor-es
+            ./master_deploy.sh -d ECS -e DEV -t latest -s dev-global-appvar,dev-resource-processor-es-appvar -i resource-processor-es
             
     
   "build-prod":
