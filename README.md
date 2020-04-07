@@ -8,7 +8,6 @@ This microservice processes kafka events related to challenge resources and upda
 [![CircleCI](https://circleci.com/gh/topcoder-platform/resource-processor-es/tree/master.svg?style=svg)](https://circleci.com/gh/topcoder-platform/resource-processor-es/tree/master)
 
 ## Intended use
-
 - Processor
 
 ## Prerequisites
