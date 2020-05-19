@@ -19,7 +19,7 @@ This microservice processes kafka events related to challenge resources and upda
 
 ## Configuration
 
-Configuration for the processor is at `config/default.js`.
+Configuration for the processor is at `config/default.js` and `config/production.js`.
 The following parameters can be set in config files or in env variables:
 
 - DISABLE_LOGGING: whether to disable logging; default value is false
@@ -55,6 +55,8 @@ Also note that there is a `/health` endpoint that checks for the health of the a
 This sets up an expressjs server and listens on the environment variable `PORT`.
 It's not part of the configuration file and needs to be passed as an environment variable.
 Default health check port is 3000 if not set.
+
+Config for tests are at `config/test.js`, it overrides some default config.
 
 ## Local Deployment
 
@@ -130,17 +132,52 @@ docker-compose up
 ## Running tests Locally
 
 ### Configuration
-- TBD
+
+Test configuration is at `config/test.js`. You don't need to change them.
+The following test parameters can be set in config file or in env variables:
+
+- ES.RESOURCE_INDEX: Elasticsearch index name for resources, default value is 'resources_test'
+- ES.RESOURCE_ROLE_INDEX: Elasticsearch index name for resource roles, default value is 'resource_roles_test'
+
+Integration tests use different indices `resources_test` and `resource_roles_test`.
+
+Please ensure to create the above test indices before running the Integration tests.
+You could re-use the existing script to create test indices but you would need to set the below environment variables
+```
+export RESOURCE_INDEX=resources_test
+export RESOURCE_ROLE_INDEX=resource_roles_test
+```
+Or, you may temporarily modify the ES.RESOURCE_INDEX to `resources_test`,
+modify ES.RESOURCE_ROLE_INDEX to `resource_roles_test` in config/default.js,
+then run `npm run init-es` to create test indices.
 
 ### Prepare
-- TBD
+- Initialize Elasticsearch.
+- Various config parameters should be properly set.
 
 ### Running unit tests
-- TBD
+
+To run unit tests alone
+```bash
+npm run test
+```
+To run unit tests with coverage report
+
+```bash
+npm run cov
+```
 
 ### Running integration tests
-- TBD
-- 
+To run integration tests alone
+```bash
+npm run e2e
+```
+To run integration tests with coverage report
+
+```bash
+npm run cov-e2e
+```
+
 ## Running tests in CI
 - TBD
 
