@@ -14,6 +14,7 @@ const client = helper.getESClient()
  * @param {Object} message the create resource message
  */
 async function createResource (message) {
+  logger.debug(`createResource ${JSON.stringify(message)}`)
   await client.create({
     index: config.ES.RESOURCE_INDEX,
     type: config.ES.RESOURCE_TYPE,
@@ -34,6 +35,11 @@ createResource.schema = {
       challengeId: Joi.string().required(),
       memberId: Joi.string().required(),
       memberHandle: Joi.string().required(),
+      legacyId: Joi.number().integer().positive().allow(null),
+      created: Joi.date().required(),
+      createdBy: Joi.string().required(),
+      updated: Joi.date(),
+      updatedBy: Joi.string(),
       roleId: Joi.string().uuid().required()
     }).unknown(true).required()
   }).required()
