@@ -14,6 +14,7 @@ const client = helper.getESClient()
  * @param {Object} message the create resource message
  */
 async function createResource (message) {
+  logger.debug(`createResource ${JSON.stringify(message)}`)
   await client.create({
     index: config.ES.RESOURCE_INDEX,
     type: config.ES.RESOURCE_TYPE,
