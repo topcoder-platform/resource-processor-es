@@ -37,10 +37,6 @@ if provided, it can be either path to certificate file or certificate content
 if not provided, then SSL connection is not used, direct insecure connection is used;
 if provided, it can be either path to private key file or private key content
 
-- RESOURCE_CREATE_TOPIC: create resource Kafka topic, default value is 'challenge.action.resource.create'
-
-- RESOURCE_DELETE_TOPIC: delete resource Kafka topic, default value is 'challenge.action.resource.delete'
-
 - RESOURCE_ROLE_CREATE_TOPIC: create resource role Kafka topic, default value is 'challenge.action.resource.role.create'
 - RESOURCE_ROLE_UPDATE_TOPIC: update resource role Kafka topic, default value is 'challenge.action.resource.role.update'
 - ES.HOST: Elasticsearch host, default value is 'localhost:9200'

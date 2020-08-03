@@ -10,57 +10,6 @@ const helper = require('../common/helper')
 const client = helper.getESClient()
 
 /**
- * Handle create resource message. It will create resource in Elasticsearch.
- * @param {Object} message the create resource message
- */
-async function createResource (message) {
-  logger.debug(`createResource ${JSON.stringify(message)}`)
-  await client.create({
-    index: config.ES.RESOURCE_INDEX,
-    type: config.ES.RESOURCE_TYPE,
-    id: message.payload.id,
-    body: message.payload,
-    refresh: 'true' // refresh ES so that it is visible for read operations instantly
-  })
-}
-
-createResource.schema = {
-  message: Joi.object().keys({
-    topic: Joi.string().required(),
-    originator: Joi.string().required(),
-    timestamp: Joi.date().required(),
-    'mime-type': Joi.string().required(),
-    payload: Joi.object().keys({
-      id: Joi.string().uuid().required(),
-      challengeId: Joi.string().required(),
-      memberId: Joi.string().required(),
-      memberHandle: Joi.string().required(),
-      legacyId: Joi.number().integer().positive().allow(null),
-      created: Joi.date().required(),
-      createdBy: Joi.string().required(),
-      updated: Joi.date(),
-      updatedBy: Joi.string(),
-      roleId: Joi.string().uuid().required()
-    }).unknown(true).required()
-  }).required()
-}
-
-/**
- * Handle delete resource message. It will delete resource in Elasticsearch.
- * @param {Object} message the delete resource message
- */
-async function deleteResource (message) {
-  await client.delete({
-    index: config.ES.RESOURCE_INDEX,
-    type: config.ES.RESOURCE_TYPE,
-    id: message.payload.id,
-    refresh: 'true' // refresh ES so that it is effective for read operations instantly
-  })
-}
-
-deleteResource.schema = createResource.schema
-
-/**
  * Handle create resource role message. It will create resource role in Elasticsearch.
  * @param {Object} message the create resource role message
  */
@@ -108,8 +57,6 @@ updateResourceRole.schema = createResourceRole.schema
 
 // Exports
 module.exports = {
-  createResource,
-  deleteResource,
   createResourceRole,
   updateResourceRole
 }

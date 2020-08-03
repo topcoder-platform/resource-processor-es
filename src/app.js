@@ -37,12 +37,6 @@ const dataHandler = (messageSet, topic, partition) => Promise.each(messageSet, (
   }
   return (async () => {
     switch (topic) {
-      case config.RESOURCE_CREATE_TOPIC:
-        await ProcessorService.createResource(messageJSON)
-        break
-      case config.RESOURCE_DELETE_TOPIC:
-        await ProcessorService.deleteResource(messageJSON)
-        break
       case config.RESOURCE_ROLE_CREATE_TOPIC:
         await ProcessorService.createResourceRole(messageJSON)
         break
@@ -75,8 +69,6 @@ logger.info('Starting kafka consumer')
 consumer
   .init([{
     subscriptions: [
-      config.RESOURCE_CREATE_TOPIC,
-      config.RESOURCE_DELETE_TOPIC,
       config.RESOURCE_ROLE_CREATE_TOPIC,
       config.RESOURCE_ROLE_UPDATE_TOPIC
     ],
