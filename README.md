@@ -1,4 +1,4 @@
-# Topcoder - Challenge Elasticsearch Processor
+# Topcoder - Challenge Resource Elasticsearch Processor
 
 This microservice processes kafka events related to challenge resources and updates data in ElasticSearch
 
@@ -179,3 +179,5 @@ npm run cov-e2e
 
 ## Verification
 Refer to the verification document `Verification.md`
+
+Commit to force redeploy
