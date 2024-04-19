@@ -9,5 +9,5 @@ set -eo pipefail
 #TAG=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$AWS_REPOSITORY:$CIRCLE_BUILD_NUM
 #sed -i='' "s|resource-processor-es:latest|$TAG|" docker/docker-compose.yml
 echo "" > docker/api.env
-docker-compose -f docker/docker-compose.yml build resource-processor-es
+docker compose -f docker/docker-compose.yml build resource-processor-es
 docker images
