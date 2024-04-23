@@ -2,11 +2,12 @@
  * Test data to be used in tests
  */
 
-const uuid = require('uuid/v4')
+//const uuid = require('uuid/v4')
+const { v4: uuidv4 }  = require('uuid')
 
-const resourceId = uuid()
-const roleId = uuid()
-const notFoundId = uuid()
+const resourceId = uuidv4()
+const roleId = uuidv4()
+const notFoundId = uuidv4()
 
 const createResourceMessage = {
   topic: 'challenge.action.resource.create',
@@ -15,7 +16,7 @@ const createResourceMessage = {
   'mime-type': 'application/json',
   payload: {
     id: resourceId,
-    challengeId: uuid(),
+    challengeId: uuidv4(),
     memberId: '123456',
     memberHandle: 'test',
     roleId
@@ -29,7 +30,7 @@ const removeResourceMessage = {
   'mime-type': 'application/json',
   payload: {
     id: resourceId,
-    challengeId: uuid(),
+    challengeId: uuidv4(),
     memberId: '123123',
     memberHandle: 'test2',
     roleId

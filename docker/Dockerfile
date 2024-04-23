@@ -1,5 +1,5 @@
 # Use the base image with Node.js
-FROM node:10.16
+FROM node:21.6.0
 
 # Copy the current directory into the Docker image
 COPY . /resource-processor-es
