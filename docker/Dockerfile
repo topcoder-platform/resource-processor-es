@@ -9,4 +9,4 @@ WORKDIR /resource-processor-es
 
 # Install the dependencies from package.json
 RUN npm install
-CMD npm start
+CMD ["node", "src/app.js"]
