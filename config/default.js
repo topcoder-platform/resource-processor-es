@@ -16,10 +16,9 @@ module.exports = {
   RESOURCE_ROLE_CREATE_TOPIC: process.env.RESOURCE_ROLE_CREATE_TOPIC || 'challenge.action.resource.role.create',
   RESOURCE_ROLE_UPDATE_TOPIC: process.env.RESOURCE_ROLE_UPDATE_TOPIC || 'challenge.action.resource.role.update',
 
-  ES: {
-    HOST: process.env.ES_HOST || 'localhost:9200',
+  OS: {
+    HOST: process.env.OS_HOST || 'localhost:9200',
     AWS_REGION: process.env.AWS_REGION || 'us-east-1', // AWS Region to be used if we use AWS ES
-    API_VERSION: process.env.ES_API_VERSION || '6.8',
     RESOURCE_INDEX: process.env.RESOURCE_INDEX || 'resources',
     RESOURCE_TYPE: process.env.RESOURCE_TYPE || '_doc',
     RESOURCE_ROLE_INDEX: process.env.RESOURCE_ROLE_INDEX || 'resource_roles',

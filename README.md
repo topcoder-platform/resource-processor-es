@@ -2,6 +2,8 @@
 
 This microservice processes kafka events related to challenge resources and updates data in ElasticSearch
 
+**NOTE** - This service does not appear to do anything.  Currently resource roles are read from DynamoDB in the resources API.  The index that this repository was pointing to (resource_roles), does not exist in ES, even before the migration to OS.
+
 ### Development deployment status
 [![CircleCI](https://circleci.com/gh/topcoder-platform/resource-processor-es/tree/develop.svg?style=svg)](https://circleci.com/gh/topcoder-platform/resource-processor-es/tree/develop)
 ### Production deployment status
